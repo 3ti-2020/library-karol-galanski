@@ -24,6 +24,8 @@
 .sidebar{
     background-color: gold;
     grid-area: sb;
+    display: flex;
+    justify-content: center;
 }
 .main{
     background-color: saddlebrown;
@@ -31,6 +33,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.insert{
+  width: 200px;
+  display: flex;
+  flex-direction: column;
 }
 .tabelka{
     border-collapse: collapse;

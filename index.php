@@ -11,7 +11,49 @@
             <h1>Karol Galański</h1>
         </div>
         <div class="sidebar">
-            <h1>>Tu będzie insert i delete<</h1>
+
+            <div class="inserty">
+
+                <form action="insert-autor.php" method="post" class="insert">
+                    <input type="text" name="imie" placeholder="podaj imie">
+                    <input type="text" name="nazwisko" placeholder="podaj nazwisko">
+                    <input type="submit" value="dodaj">
+                </form>
+                <form action="insert-tytul.php" method="post" class="insert">
+                    <input type="text" name="tytul" placeholder="tytul">
+                    <input type="submit" value="dodaj">
+                </form>
+
+                <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "library";
+
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                    $result2 = $conn->query("SELECT * FROM autorzy");
+
+                    echo("<form action='insert-ksiazka.php' method='POST'  class='insert'>");
+                    echo("<select name='wybrany-autor'>");
+                    while($row=$result2->fetch_assoc() ){
+                        echo("<option value='".$row['id_autor']."'>".$row['imie']." ".$row['nazwisko']."</option>");
+                    }
+                    echo("</select>");
+
+                    $result3 = $conn->query("SELECT * FROM tytuly");
+
+                    echo("<select name='wybrany-tytul'>");
+                    while($row=$result3->fetch_assoc() ){
+                        echo("<option value='".$row['id_tytul']."'>".$row['tytul']."</option>");
+                    }
+                    echo("</select>");
+
+                    echo("<input type='submit' value='dodaj'>");
+                    echo("</form>");
+                ?> 
+
+            </div>
         </div>
         <div class="main">
 
